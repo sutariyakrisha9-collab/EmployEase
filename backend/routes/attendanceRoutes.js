@@ -1,21 +1,25 @@
-const express = require('express')
-const router = express.Router()
-
-const authMiddleware = require('../middleware/authMiddleware')
-const adminMiddleware = require('../middleware/adminMiddleware')
+const express = require('express');
+const router = express.Router();
 
 const {
   markAttendance,
   getAttendance,
   updateAttendance,
   deleteAttendance
-} = require('../controllers/attendanceController')
+} = require('../controllers/attendanceController');
 
-router.use(authMiddleware, adminMiddleware)
+// College demo only: authentication disabled temporarily
 
-router.post('/', markAttendance)
-router.get('/', getAttendance)
-router.put('/:id', updateAttendance)
-router.delete('/:id', deleteAttendance)
+// Mark attendance
+router.post('/', markAttendance);
 
-module.exports = router
+// Get attendance records
+router.get('/', getAttendance);
+
+// Update attendance
+router.put('/:id', updateAttendance);
+
+// Delete attendance
+router.delete('/:id', deleteAttendance);
+
+module.exports = router;
